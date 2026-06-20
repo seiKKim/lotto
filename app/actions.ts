@@ -2,7 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { createStore, type StoreInput } from "@/lib/stores";
-import { createPurchase, type PurchaseInput } from "@/lib/purchases";
+import {
+  createPurchase,
+  deletePurchase,
+  type PurchaseInput,
+} from "@/lib/purchases";
 import { addManualDraw, type ManualDrawInput } from "@/lib/draws";
 import { scoreRound } from "@/lib/score";
 import { recommend, type Recommendation } from "@/lib/recommend";
@@ -39,6 +43,19 @@ export async function createPurchaseAction(
     revalidatePath("/purchases");
     revalidatePath("/");
     return { ok: true, id };
+  } catch (e) {
+    return fail(e);
+  }
+}
+
+export async function deletePurchaseAction(
+  id: number
+): Promise<ActionResult> {
+  try {
+    await deletePurchase(id);
+    revalidatePath("/purchases");
+    revalidatePath("/");
+    return { ok: true };
   } catch (e) {
     return fail(e);
   }

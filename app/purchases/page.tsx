@@ -3,6 +3,7 @@ import { resultsOfPurchase } from "@/lib/score";
 import { getDraw, type DrawRow } from "@/lib/draws";
 import { LottoBalls } from "../components/LottoBalls";
 import { RankBadge } from "../components/RankBadge";
+import { DeletePurchaseButton } from "../components/DeletePurchaseButton";
 
 export const dynamic = "force-dynamic";
 
@@ -72,9 +73,15 @@ export default async function PurchasesPage() {
                       </span>
                     )}
                   </div>
-                  <div className="text-sm text-neutral-500">
-                    {p.purchase_date ?? ""} · {p.game_count}게임 ·{" "}
-                    {p.amount.toLocaleString("ko-KR")}원
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-neutral-500">
+                      {p.purchase_date ?? ""} · {p.game_count}게임 ·{" "}
+                      {p.amount.toLocaleString("ko-KR")}원
+                    </span>
+                    <DeletePurchaseButton
+                      id={p.id}
+                      label={`${p.round}회 · ${p.store_name ?? "판매점 미지정"}`}
+                    />
                   </div>
                 </div>
                 {draw && (

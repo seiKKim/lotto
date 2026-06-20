@@ -116,6 +116,28 @@ export async function gamesOfPurchase(purchaseId: number): Promise<GameRow[]> {
   return rs.rows as unknown as GameRow[];
 }
 
+/** 구매 1건 삭제 (게임·결과까지 트랜잭션 내 수동 cascade). */
+export async function deletePurchase(id: number): Promise<void> {
+  if (!Number.isInteger(id) || id < 1) throw new Error("잘못된 구매 ID");
+  const db = await getDb();
+  const tx = await db.transaction("write");
+  try {
+    await tx.execute({
+      sql: "DELETE FROM results WHERE game_id IN (SELECT id FROM games WHERE purchase_id=?)",
+      args: [id],
+    });
+    await tx.execute({
+      sql: "DELETE FROM games WHERE purchase_id=?",
+      args: [id],
+    });
+    await tx.execute({ sql: "DELETE FROM purchases WHERE id=?", args: [id] });
+    await tx.commit();
+  } catch (e) {
+    await tx.rollback();
+    throw e;
+  }
+}
+
 export async function countPurchases(): Promise<number> {
   const db = await getDb();
   const rs = await db.execute("SELECT COUNT(*) AS c FROM purchases");
