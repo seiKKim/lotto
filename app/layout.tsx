@@ -73,6 +73,12 @@ export default function RootLayout({
               >
                 분석
               </a>
+              <a
+                href="/winning-stores"
+                className="text-sm text-neutral-600 hover:text-neutral-900"
+              >
+                명당
+              </a>
             </div>
             <a
               href="/purchases/new"

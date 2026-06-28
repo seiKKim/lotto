@@ -8,18 +8,23 @@
     "start": "next start",
     "seed": "node scripts/seed.mjs",
     "seed:turso": "node --env-file=.env scripts/seed.mjs",
-    "build-seed-csv": "node scripts/build-seed-csv.mjs"
+    "seed:stores": "node scripts/seed-winning-stores.mjs",
+    "seed:stores:turso": "node --env-file=.env scripts/seed-winning-stores.mjs",
+    "build-seed-csv": "node scripts/build-seed-csv.mjs",
+    "build-winning-stores": "node scripts/build-winning-stores.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
     "@zxing/browser": "^0.2.0",
     "@zxing/library": "^0.22.0",
+    "leaflet": "^1.9.4",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

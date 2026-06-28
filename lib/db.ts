@@ -59,6 +59,18 @@ const SCHEMA = `
     scored_at   TEXT    NOT NULL DEFAULT (datetime('now'))
   );
 
+  -- 1등 배출 판매점 (smok95 winning-stores 집계). 좌표 포함 → "내 주변" 검색용.
+  CREATE TABLE IF NOT EXISTS winning_stores (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    name       TEXT NOT NULL,
+    address    TEXT NOT NULL,
+    lat        REAL NOT NULL,
+    lng        REAL NOT NULL,
+    win_count  INTEGER NOT NULL DEFAULT 1,  -- 1등 배출 횟수
+    last_round INTEGER,                      -- 최근 배출 회차
+    UNIQUE(name, address)
+  );
+
   CREATE INDEX IF NOT EXISTS idx_purchases_round ON purchases(round);
   CREATE INDEX IF NOT EXISTS idx_games_purchase  ON games(purchase_id);
   CREATE INDEX IF NOT EXISTS idx_results_round    ON results(round);

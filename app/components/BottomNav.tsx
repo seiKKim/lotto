@@ -8,6 +8,7 @@ const TABS = [
   { href: "/purchases", label: "구매", icon: "🎟️" },
   { href: "/draws", label: "당첨", icon: "🎯" },
   { href: "/analysis", label: "분석", icon: "📊" },
+  { href: "/winning-stores", label: "명당", icon: "📍" },
   { href: "/stores", label: "판매점", icon: "🏪" },
 ];
 
