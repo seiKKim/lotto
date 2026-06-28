@@ -1,5 +1,6 @@
 import { countDraws, listDraws } from "@/lib/draws";
 import { LottoBalls } from "../components/LottoBalls";
+import { SyncDrawsButton } from "../components/SyncDrawsButton";
 
 export const dynamic = "force-dynamic";
 
@@ -18,17 +19,18 @@ export default async function DrawsPage({
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-xl font-bold">당첨번호 ({total}회)</h1>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <span className="text-sm text-neutral-500">
             {page} / {pages} 페이지
           </span>
+          <SyncDrawsButton />
           <a
             href="/draws/new"
-            className="rounded-lg bg-blue-600 px-3 py-1.5 text-sm font-medium text-white"
+            className="rounded-lg border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-50"
           >
-            + 당첨번호 입력
+            + 수동 입력
           </a>
         </div>
       </div>
