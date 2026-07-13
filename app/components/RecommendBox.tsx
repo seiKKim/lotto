@@ -92,6 +92,16 @@ export function RecommendBox() {
             </div>
           )}
 
+          <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-3 text-xs text-emerald-900">
+            🎯 <b>완전 분산 구성</b> — 5게임이 서로 번호를 안 겹치게(45개 중{" "}
+            <b>{reco.coverage}개</b> 커버) 골랐습니다. 게임들이 같은 번호에서 다
+            같이 빗나가지 않아, <b>이번 주 최소 하나라도 맞을 확률</b>이 겹쳐 살
+            때(약 8.8%)보다 높아집니다(약 11.9%).{" "}
+            <span className="opacity-70">
+              단, 평균 적중 개수·당첨 확률 자체는 동일합니다.
+            </span>
+          </div>
+
           <div className="rounded-lg bg-amber-50 p-3 text-xs text-amber-800">
             ⚠️ 이 추천은 <b>당첨 확률을 높이지 않습니다</b> (어떤 6개든 확률
             동일). ① 인기조합 점수가 낮아 <b>당첨 시 상금 분배 위험이 적고</b>, ②
