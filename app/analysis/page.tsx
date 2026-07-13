@@ -2,6 +2,7 @@ import { numberFrequencies, distroStats } from "@/lib/stats";
 import { NumberAnalyzer } from "../components/NumberAnalyzer";
 import { FrequencyChart } from "../components/FrequencyChart";
 import { RecommendBox } from "../components/RecommendBox";
+import { MyDiagnosisSection } from "../components/MyDiagnosisSection";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,8 @@ export default async function AnalysisPage() {
       <h1 className="text-xl font-bold">분석</h1>
 
       <RecommendBox />
+
+      <MyDiagnosisSection />
 
       <NumberAnalyzer />
 
